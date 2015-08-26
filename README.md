@@ -40,6 +40,9 @@ python manage.py runserver
 Now open up a web browser and browse to http://localhost:8000/admin/, and browse any of the model entry page for WorldBorder objects. The map is editable!
 
 
-This app also features a GET endpoint that accepts lat and lng as arguments and returns the country that contains the GIS Point corresponding to the input lat/lng. It returns "null" otherwise, for example if the point lies in the international waters.
+This app also features a GET endpoint that accepts lat and lon as arguments and returns the country that contains the GEOS Geometry Object corresponding to the input lat/lon. An error message is returned if either of lat or lon are not provided, or if they are not float convertible, or if no country is found that contains this point.
 
-
+```bash
+curl -X GET 'localhost:8000/gis/country?lat=12.936647&lon=77.613350'
+{"status": "ok", "response": {"name": "India", "area": 297319, "lon": 78.5, "iso3": "IND", "iso2": "IN", "lat": 21.0, "id": 83}}
+```

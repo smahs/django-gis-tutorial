@@ -5,5 +5,5 @@ from views import GetCountryByLL
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^country/', GetCountryByLL.as_view()),
+    url(r'^country', GetCountryByLL.as_view()),
 ]
