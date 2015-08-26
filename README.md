@@ -30,3 +30,16 @@ createdb -U admin -T template_postgis geodb
 python manage.py migrage
 python load.py
 ```
+
+### Running the app
+This app features a cool map editing admin from the GeoDjango project. Use see it in action, create a superuser account and login to Django admin using this account:
+```python
+python manage.py createsuperuser
+python manage.py runserver
+```
+Now open up a web browser and browse to http://localhost:8000/admin/, and browse any of the model entry page for WorldBorder objects. The map is editable!
+
+
+This app also features a GET endpoint that accepts lat and lng as arguments and returns the country that contains the GIS Point corresponding to the input lat/lng. It returns "null" otherwise, for example if the point lies in the international waters.
+
+
